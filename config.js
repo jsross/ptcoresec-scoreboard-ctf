@@ -3,18 +3,14 @@ var config = {};
 config.db = {};
 config.dbHashes = {};
 
-// Complete DB
-config.db.host = ''; // <-- Insert host
-config.db.user = ''; // <-- Insert user
-config.db.password = ''; // <-- Insert password
-//Don't Change.
+config.db.host = process.env.DB_HOST;
+config.db.user = process.env.DB_USER;
+config.db.password = process.env.DB_PASSWORD;
 config.db.database = 'torneio';
 
-// Password Salt DB
-config.dbHashes.host = ''; // <-- Insert host
-config.dbHashes.user = ''; // <-- Insert user
-config.dbHashes.password = ''; // <-- Insert password
-//Don't Change.
+config.dbHashes.host = process.env.DB_HOST;
+config.dbHashes.user = process.env.DB_USER;
+config.dbHashes.password = process.env.DB_PASSWORD;
 config.dbHashes.database = 'passsalts';
 
 module.exports = config;
