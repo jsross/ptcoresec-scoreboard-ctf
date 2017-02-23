@@ -126,9 +126,6 @@ function addRandomProblem(){
 
 
 var app = express.createServer({key: privateKey, cert: certificate});
-console.log("Server running at http://127.0.0.1:" + process.env.PORT);
-app.set('port', process.env.PORT);
-
 
 // Configuration
 var secret = 'eO+Hh]#[)v{h?&s~5XuQMIN4VV@H5%8>';
@@ -266,8 +263,7 @@ app.post('/editOptions', sessions.requiresAdminLogin, administration.editOptions
 app.post('/resetTeamlogs', sessions.requiresAdminLogin, administration.resetTeamlogs);
 app.get('/comms', sessions.requiresAdminLogin, administration.comms);
 
-
-	app.listen(3000, function(){
+  app.listen(process.env.PORT || 3000, function(){
 	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
   });
 
