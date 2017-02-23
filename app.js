@@ -126,7 +126,8 @@ function addRandomProblem(){
 
 
 var app = express.createServer({key: privateKey, cert: certificate});
-app.set('port', process.env.PORT || 3000);
+console.log("Server running at http://127.0.0.1:" + process.env.PORT);
+app.set('port', process.env.PORT);
 
 
 // Configuration
