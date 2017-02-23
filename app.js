@@ -126,7 +126,7 @@ function addRandomProblem(){
 
 
 var app = express.createServer({key: privateKey, cert: certificate});
-
+app.set('port', process.env.PORT || 3000);
 
 
 // Configuration
@@ -458,9 +458,9 @@ function verifyAnswer(socket, teamname, teamid, group, problem, answer){
 	var somapontos = 0;
 	var correct = false;
 	connections.connection.query(sqlConfig, function(err, rowsConfig, fields) {
-		//Verificar se ainda está a decorrer
+		//Verificar se ainda estï¿½ a decorrer
 		if(now > rowsConfig[0].start_date && now < rowsConfig[0].end_date){
-			//Ver se já respondeu
+			//Ver se jï¿½ respondeu
 			connections.connection.query(sqlCheckifAlreadyAnswered, function(err, rows, fields) {
 				if(err){ 
 					util.log(sqlCheckifAlreadyAnswered);
