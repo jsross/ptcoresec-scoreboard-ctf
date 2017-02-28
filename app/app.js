@@ -16,12 +16,11 @@ var cluster = require("cluster");
 var numCPUs = require('os').cpus().length;
 
 var RedisStore = require('connect-redis')(express);
-var storeSession = new RedisStore;
+var storeSession = new RedisStore({ host: config.redis.host, port: config.redis.port});
 
 var privateKey = fs.readFileSync('keys/privatekey.pem').toString();
 var certificate = fs.readFileSync('keys/certificate.pem').toString();
 var credentials = crypto.createCredentials({key: privateKey, cert: certificate});
-
 
 connections.connection.on('close', function(err) {
   if (err) {

@@ -6,18 +6,33 @@ services:
       context: .
       dockerfile: Dockerfile-webapp
     environment:
-      - DB_HOST=db
+      - DB_HOST=mysql
       - DB_USER=root
       - DB_PASSWORD=abc123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PORT=443
     networks:
       - ctf_net
+    depends_on:
+      - mysql
+      - redis
+
   mysql:
     image: mysql:latest
     networks:
       - ctf_net
     environment:
       MYSQL_ROOT_PASSWORD: abc123
+    
+  redis:
+    image: redis:latest
+    networks:
+      - ctf_net
 
 networks:
   ctf_net:
     driver: bridge
+    
+volumes:
+  sql:

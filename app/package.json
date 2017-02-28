@@ -18,7 +18,10 @@
          "name": "Balgan"
        , "email": "Balgan@ptcoresec.eu"
       }
-  ]
+  ],
+  "scripts": {
+    "start": "app.js"
+  }
   , "dependencies": {
       "express": "2.5.8"
     , "jade": "0.26.3"

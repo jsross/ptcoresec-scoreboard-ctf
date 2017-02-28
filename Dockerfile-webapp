@@ -1,0 +1,17 @@
+FROM ubuntu:latest
+
+RUN apt-get -y update
+RUN apt-get -y install nodejs
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+EXPOSE 80
+EXPOSE 443
+
+# Bundle app source
+COPY /app /usr/src/app
+
+COPY /keys /usr/src/app/keys
+
+CMD ["nodejs", "app.js"]
